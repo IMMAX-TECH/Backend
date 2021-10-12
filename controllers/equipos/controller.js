@@ -11,7 +11,7 @@ const crearEquipos = async (datosEquipos, callback) => {
     Object.keys(datosEquipos).includes('referencia') &&
     Object.keys(datosEquipos).includes('nombre') &&
     Object.keys(datosEquipos).includes('marca') &&
-    Object.keys(datosEquipos).includes('modelo') &&
+    Object.keys(datosEquipos).includes('modelo')
     
   ) {
     const baseDeDatos = getDB();
