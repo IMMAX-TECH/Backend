@@ -1,10 +1,10 @@
 import Express from 'express';
 import {
-  queryAllVehicles,
-  crearVehiculo,
-  editarVehiculo,
-  eliminarVehiculo,
-  consultarVehiculo,
+  queryAllEquipos,
+  crearEquipos,
+  editarEquipos,
+  eliminarEquipos,
+  consultarEquipos,
 } from '../../controllers/equipos/controller.js';
 
 const rutasEquipos = Express.Router();
@@ -19,24 +19,24 @@ const genercCallback = (res) => (err, result) => {
 
 rutasEquipos.route('/equipos').get((req, res) => {
   console.log('alguien hizo get en la ruta /equipos');
-  queryAllVehicles(genercCallback(res));
+  queryAllEquipos(genercCallback(res));
 });
 
 rutasEquipos.route('/equipos').post((req, res) => {
-  crearVehiculo(req.body, genercCallback(res));
+  crearEquipos(req.body, genercCallback(res));
 });
 
 rutasEquipos.route('/equipos/:id').get((req, res) => {
   console.log('alguien hizo get en la ruta /equipos');
-  consultarVehiculo(req.params.id, genercCallback(res));
+  consultarEquipos(req.params.id, genercCallback(res));
 });
 
 rutasEquipos.route('/equipos/:id').patch((req, res) => {
-  editarVehiculo(req.params.id, req.body, genercCallback(res));
+  editarEquipos(req.params.id, req.body, genercCallback(res));
 });
 
 rutasEquipos.route('/equipos/:id').delete((req, res) => {
-  eliminarVehiculo(req.params.id, genercCallback(res));
+  eliminarEquipos(req.params.id, genercCallback(res));
 });
 
 export default rutasEquipos;

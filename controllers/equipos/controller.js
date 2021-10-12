@@ -1,49 +1,48 @@
-import { ObjectId } from 'mongodb';
+import ObjectId  from 'mongodb';
 import { getDB } from '../../db/db.js';
 
-const queryAllVehicles = async (callback) => {
+const queryAllEquipos = async (callback) => {
   const baseDeDatos = getDB();
-  await baseDeDatos.collection('vehiculo').find({}).limit(50).toArray(callback);
+  await baseDeDatos.collection('Equipos').find({}).limit(50).toArray(callback);
 };
 
-const crearVehiculo = async (datosVehiculo, callback) => {
+const crearEquipos = async (datosEquipos, callback) => {
   if (
-    Object.keys(datosVehiculo).includes('name') &&
-    Object.keys(datosVehiculo).includes('brand') &&
-    Object.keys(datosVehiculo).includes('model')
+    Object.keys(datosEquipos).includes('name') &&
+    Object.keys(datosEquipos).includes('brand') &&
+    Object.keys(datosEquipos).includes('model')
   ) {
     const baseDeDatos = getDB();
     // implementar código para crear vehículo en la BD
-    await baseDeDatos.collection('vehiculo').insertOne(datosVehiculo, callback);
+    await baseDeDatos.collection('Equipos').insertOne(datosEquipos, callback);
   } else {
     return 'error';
   }
 };
 
-const consultarVehiculo = async (id, callback) => {
+const consultarEquipos = async (id, callback) => {
   const baseDeDatos = getDB();
-  await baseDeDatos.collection('vehiculo').findOne({ _id: new ObjectId(id) }, callback);
+  await baseDeDatos.collection('Equipos').findOne({ _id: new ObjectId(id) }, callback);
 };
 
-const editarVehiculo = async (id, edicion, callback) => {
-  const filtroVehiculo = { _id: new ObjectId(id) };
+const editarEquipos = async (id, edicion, callback) => {
+  const filtroEquipos = { _id: new ObjectId(id) };
   const operacion = {
     $set: edicion,
   };
   const baseDeDatos = getDB();
   await baseDeDatos
-    .collection('vehiculo')
-    .findOneAndUpdate(filtroVehiculo, operacion, { upsert: true, returnOriginal: true }, callback);
+    .collection('Equipos')
+    .findOneAndUpdate(filtroEquipos, operacion, { upsert: true, returnOriginal: true }, callback);
 };
 
-const eliminarVehiculo = async (id, callback) => {
-  const filtroVehiculo = { _id: new ObjectId(id) };
+const eliminarEquipos = async (id, callback) => {
+  const filtroEquipos = { _id: new ObjectId(id) };
   const baseDeDatos = getDB();
-  await baseDeDatos.collection('vehiculo').deleteOne(filtroVehiculo, callback);
+  await baseDeDatos.collection('Equipos').deleteOne(filtroEquipos, callback);
 };
 
-export { queryAllVehicles, crearVehiculo, consultarVehiculo, editarVehiculo, eliminarVehiculo };import { ObjectId } from 'mongodb';
-import { getDB } from '../../db/db.js';
+export { queryAllEquipos, crearEquipos, consultarEquipos, editarEquipos, eliminarEquipos }; 
 
 const queryAllUsers = async (callback) => {
   const baseDeDatos = getDB();
