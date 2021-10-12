@@ -8,9 +8,11 @@ const queryAllEquipos = async (callback) => {
 
 const crearEquipos = async (datosEquipos, callback) => {
   if (
-    Object.keys(datosEquipos).includes('name') &&
-    Object.keys(datosEquipos).includes('brand') &&
-    Object.keys(datosEquipos).includes('model')
+    Object.keys(datosEquipos).includes('referencia') &&
+    Object.keys(datosEquipos).includes('nombre') &&
+    Object.keys(datosEquipos).includes('marca') &&
+    Object.keys(datosEquipos).includes('modelo') &&
+    
   ) {
     const baseDeDatos = getDB();
     // implementar código para crear vehículo en la BD
