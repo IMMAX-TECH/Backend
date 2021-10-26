@@ -30,7 +30,7 @@ issuer: 'https://immax-tech.us.auth0.com/',
 algorithms: ['RS256']
 });
 
-//app.use(jwtCheck);
+app.use(jwtCheck);
 
 app.use(rutasEquipos);
 app.use(rutasUsuario);
